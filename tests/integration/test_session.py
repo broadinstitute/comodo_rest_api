@@ -47,7 +47,7 @@ config.default_cassette_options['placeholders'] = [
 # A 'good' working client
 @pytest.fixture(scope='class')
 def api_client():
-    yield comodo_rest_api.ComodoTLSService(api_url='https://hard.cert-manager.com/api/ssl/v1/',
+    yield comodo_rest_api.ComodoTLSService(api_url='https://hard.cert-manager.com/api',
                                       customer_login_uri=customer_login_uri, login=login, org_id=org_id,
                                       client_cert_auth=True,
                                       client_public_certificate=client_public_certificate,
@@ -57,7 +57,7 @@ def api_client():
 # A 'bad' or bogus client to generate errors
 @pytest.fixture(scope='class')
 def bad_api_client():
-    yield comodo_rest_api.ComodoTLSService(api_url='https://hard.cert-manager.com/api/ssl/v1/',
+    yield comodo_rest_api.ComodoTLSService(api_url='https://hard.cert-manager.com/api',
                                       customer_login_uri='BadURI', login='BadLogin', org_id=1234,
                                       client_cert_auth=False, password='BadPassword')
 
